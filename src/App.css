@@ -14,8 +14,11 @@
 }
 
 .App-background {
+  text-align: center;
   background-color: #282c34;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-link {
@@ -23,9 +26,10 @@
 }
 
 .Acc-logo{
-  width: 45%;
+  width: 35%;
   border-radius: 7%;
-  margin-top: 10%;
+  margin-top: 5%;
+  height: 20%;
 }
 
 @keyframes App-logo-spin {
@@ -36,3 +40,10 @@
     transform: rotate(360deg);
   }
 }
+
+a{
+  color: rgb(14, 146, 241);
+  margin-top: 5%;
+}
+
+
