@@ -13,19 +13,19 @@
   }
 }
 
-.App-header {
+.App-background {
   background-color: #282c34;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.Acc-logo{
+  width: 45%;
+  border-radius: 7%;
+  margin-top: 10%;
 }
 
 @keyframes App-logo-spin {
