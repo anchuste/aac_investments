@@ -32,6 +32,12 @@
   height: 20%;
 }
 
+@media only screen and (max-width: 500px) {
+  .Acc-logo {
+    width: 60%;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

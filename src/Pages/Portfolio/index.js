@@ -1,13 +1,11 @@
-import logo from './../../logo_acc_512.png';
+import Header from '../../Components/Header';
+import PageTitle from '../../Components/PageTitle';
 
 export default function Portfolio(){
     return (
         <div className="App-background">
-            <header>
-                <img src={logo} alt="logo" className="Acc-logo" />
-            </header>
-
-          Esta es la página Portfolio!!!
+            <Header></Header>
+            <PageTitle title="Portfolio"></PageTitle>
           
         </div>
     );
