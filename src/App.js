@@ -3,6 +3,7 @@ import { Route} from "wouter";
 import About from './Pages/About';
 import Home from './Pages/Home'
 import Portfolio from './Pages/Portfolio';
+import TrackRecord from './Pages/TrackRecord';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
       <Route path="/" component={Home} /> 
 
       <Route path="/portfolio" component={Portfolio} /> 
+
+      <Route path="/trackrecord" component={TrackRecord} /> 
       
     </div>
   );

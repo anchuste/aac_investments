@@ -7,7 +7,10 @@ export default function About() {
         <div className="App-background">
             <Header></Header>
             <PageTitle title="About"></PageTitle>
-            <p> Página desarrollada por Alberto Anchuste. </p>
+            <p> Página desarrollada con el framework de Javascript, React: </p>
+            <a href="https://es.reactjs.org/">React</a>
+            <p> La página está alojada de manera estática en un bucket S3, el servicio de AWS.</p>
+            <p> Ha sido realizada por Alberto Anchuste en agosto de 2022</p>
         </div>
     );
 }

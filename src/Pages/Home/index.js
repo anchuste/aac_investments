@@ -13,6 +13,8 @@ export default function Home(){
           </p>
     
           <a href="/portfolio">Portfolio</a>
+
+          <a href="/trackrecord">Track record</a>
     
           <a href="/about">About</a>
     
