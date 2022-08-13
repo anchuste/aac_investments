@@ -12,7 +12,7 @@ export default function Home(){
           Publicación de las estrategias de inversión de los fondos del inversionista privado AAC para los años 2021 y 2022 con objetivo de retornar beneficios en 2-3 años. Esta información se encuentra en la sección Portfolio.
           </p>
           <p>
-          Por otro lado en la sección Track record se muestra todo el historial de inversiones del fondo.
+          Por otro lado, en la sección Track record se muestra todo el historial de inversiones del fondo.
           </p>
     
           <a href="/portfolio">Portfolio</a>
