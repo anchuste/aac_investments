@@ -12,7 +12,7 @@ export default function About() {
             <p> La página está alojada de manera estática en un bucket S3, el servicio de AWS.</p>
             <p> El código de la aplicación es de código abierto y se puede encontrar en mi repositorio: </p>
             <a href="https://github.com/anchuste/aac_investments">Repositorio Alberto</a>
-            <p> Ha sido realizada por Alberto Anchuste en agosto de 2022</p>
+            <p> Esta página ha sido realizada por Alberto Anchuste en agosto de 2022</p>
         </div>
     );
 }
