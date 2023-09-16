@@ -1,10 +1,25 @@
+import { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import HeaderStockInfoTable from '../../Components/HeaderStockInfoTable';
 import PageTitle from '../../Components/PageTitle';
 import RowsStockInfoTable from '../../Components/RowsStockInfoTable';
+import { getPortfolio } from '../../Services/portfolio.service';
 import './styles.css'
 
 export default function Portfolio(){
+
+    const [portfolioRecovered, setPortfolioRecovered] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const portfolio = await getPortfolio();
+            setPortfolioRecovered(portfolio);
+            console.log('portfolio recuperado: ', portfolio);
+          // ...
+        }
+        fetchData();
+      }, []); // Or [] if effect doesn't need props or state
+      
     // Esta información la recogeremos más adelante de bbdd.
     let dummyData = [
         {"id":1,"title":"Adobe Inc. (ADBE)","portfolio":"14.29", "lastAddedStockDate": "12/01/2022"},
@@ -23,7 +38,7 @@ export default function Portfolio(){
             <PageTitle title="Portfolio"></PageTitle>
             <table class="container">
 	            <HeaderStockInfoTable></HeaderStockInfoTable>
-                <RowsStockInfoTable stocksInfo={dummyData}></RowsStockInfoTable>
+                <RowsStockInfoTable stocksInfo={portfolioRecovered}></RowsStockInfoTable>
             </table>
         </div>
     );
