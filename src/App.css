@@ -52,4 +52,11 @@ a{
   margin-top: 5%;
 }
 
+.btn_header{
+  font-size: 1.1em;
+  background-color: transparent;
+  color: whitesmoke;
+  border-block: none;
+  border-inline: none;
+}
 
