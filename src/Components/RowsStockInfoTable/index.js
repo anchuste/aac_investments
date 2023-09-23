@@ -1,23 +1,95 @@
-export default function RowsStockInfoTable(stocksInfo) {
+import { useEffect, useState } from 'react';
+export const RowsStockInfoTable = ({ stocksInfo }) => {
 
+    console.log("Se renderiza el componente RowsStockInfoTable")
+
+    const [stocksInfoReceived, setstocksInfoReceived] = useState([]);
+    const [sortDirection, setSortDirection] = useState(['desc']);
+    const [fieldToSort, setfieldToSort] = useState(['portfolioPercentage']);
+
+    useEffect(() => {
+        console.log("Use effect - RowsStockInfoTable");
+        setstocksInfoReceived(stocksInfo);
+        console.log("Use effect - RowsStockInfoTable final: ", stocksInfoReceived);
+        
+        sortPortfolio('portfolioPercentage', 'desc');
+    }, []);
+
+    const sortPortfolio = (fieldToSort, sortDirection) =>{
+
+        console.log('sortPortfolio: ', stocksInfo);
+
+        let array = [];
+        let field = "";
+        let changedDirection = "";
+
+        if (undefined == stocksInfoReceived ||stocksInfoReceived.length <= 0){
+            array = [...stocksInfo];
+        }else{
+            array = [...stocksInfoReceived];
+        }
+
+        if (sortDirection === 'desc'){
+            changedDirection = 'asc';
+            setSortDirection('asc');
+        }else{
+            changedDirection = 'desc';
+            setSortDirection('desc');
+        }
+
+        setfieldToSort(fieldToSort);
+
+
+
+        console.log('field to sort:' , fieldToSort);
+        //console.log('array: ', array);
+        console.log('sortDirection: ', changedDirection);
+        
+        
+        array.sort((a, b) => {
+            if (fieldToSort === 'portfolioPercentage'){
+                field = 15;
+                return changedDirection === "asc" ? a[field] - b[field] : b[field] - a[field];
+            }else if (fieldToSort === 'date'){
+                field = 1;
+                let dayA = a[field].substring(0,2)
+                let monthA = a[field].substring(3,5)
+                let yearA = a[field].substring(6,10)
+                yearA = 20 + yearA;
+
+                let dayB = b[field].substring(0,2)
+                let monthB = b[field].substring(3,5)
+                let yearB = b[field].substring(6,10)
+                yearB = 20 + yearB;
+
+                let dateA = new Date(yearA, monthA - 1, dayA);
+                let dateB = new Date(yearB, monthB - 1, dayB);
+
+                return changedDirection === "asc" ? dateA-dateB : dateB-dateA;
+            }
+        });
+
+        console.log('¡Va a hacer la actualización del array!')
+        console.log('array: ', array)
+        setstocksInfoReceived(array);
+    }
     
-    const stocksInfoDestruct = stocksInfo.stocksInfo.response;
+    console.log('stocksInfoReceived: ', stocksInfoReceived);
 
-    console.log('stocksInfoDestruct: ', stocksInfoDestruct)
-
-    if (undefined == stocksInfoDestruct || stocksInfoDestruct.length === 0){
+    /*
+    if (undefined == stocksInfo || stocksInfo.length === 0 || 
+        undefined == stocksInfo.response || stocksInfo.response === 0){
         return(
             <>
             </>
         )
-    }
-
-    function requestSort() {
-        console.log(stocksInfo);
-
-    }
+    }*/
 
 
+
+    //sortPortfolio('portfolioPercentage',stocksInfoDestruct, 'desc');
+
+    
 
     //const stocksInfoDestruct = stocksInfo.stocksInfo;
     return (
@@ -27,7 +99,6 @@ export default function RowsStockInfoTable(stocksInfo) {
                 <th>
                     <button
                         type="button"
-                        onClick={() => requestSort('name')}              
                         className="btn_header">
                     Stock
                     </button>
@@ -35,24 +106,26 @@ export default function RowsStockInfoTable(stocksInfo) {
                 <th>
                     <button
                         type="button"
-                        onClick={() => requestSort('name')}              
+                        onClick={() => sortPortfolio('portfolioPercentage', sortDirection)}              
                         className="btn_header">
                     % of Portfolio
-                    <i className="fa fa-sort-desc" />
+                    {fieldToSort === 'portfolioPercentage' && sortDirection === 'desc' &&  <i className="fa fa-sort-desc" />}
+                    {fieldToSort === 'portfolioPercentage' && sortDirection === 'asc' &&  <i className="fa fa-sort-asc" />}
                     </button>
                 </th>
                 <th>
                     <button
                         type="button"
-                        onClick={() => requestSort('name')}              
-                        className="btn_header">
+                        onClick={() => sortPortfolio('date', sortDirection)}                        className="btn_header">
                     Added date
+                    {fieldToSort === 'date' && sortDirection === 'desc' &&  <i className="fa fa-sort-desc" />}
+                    {fieldToSort === 'date' && sortDirection === 'asc' &&  <i className="fa fa-sort-asc" />}
                     </button>
                 </th>
             </tr>
             </thead>
             <tbody>
-                {stocksInfoDestruct.map((stock) => {
+                {undefined != stocksInfoReceived && stocksInfoReceived.length > 0 && stocksInfoReceived.map((stock) => {
                     const list = (
                     <tr key={stock[0]}>
                         <td>{stock[2]} </td>

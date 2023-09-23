@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -26,16 +22,7 @@
 }
 
 .Acc-logo{
-  width: 35%;
-  border-radius: 7%;
-  margin-top: 5%;
-  height: 20%;
-}
-
-@media only screen and (max-width: 500px) {
-  .Acc-logo {
-    width: 60%;
-  }
+  width: 70%;
 }
 
 @keyframes App-logo-spin {
