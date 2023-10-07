@@ -76,22 +76,7 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
     
     console.log('stocksInfoReceived: ', stocksInfoReceived);
 
-    /*
-    if (undefined == stocksInfo || stocksInfo.length === 0 || 
-        undefined == stocksInfo.response || stocksInfo.response === 0){
-        return(
-            <>
-            </>
-        )
-    }*/
-
-
-
-    //sortPortfolio('portfolioPercentage',stocksInfoDestruct, 'desc');
-
-    
-
-    //const stocksInfoDestruct = stocksInfo.stocksInfo;
+ 
     return (
         <>
             <thead>
