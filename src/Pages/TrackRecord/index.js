@@ -3,10 +3,12 @@ import Header from '../../Components/Header';
 import PageTitle from '../../Components/PageTitle';
 import { getTrackrecord } from '../../Services/trackrecord.service';
 import './styles.css'
+import { TrackrecordInfoTable } from '../../Components/TrackrecordInfoTable';
 
 export default function TrackRecord(){
 
     let trackrecord = [];
+    const [trackrecordInfoRecovered, setTrackrecordInfoRecovered] = useState([]);
 
     useEffect(() => {
 
@@ -17,7 +19,6 @@ export default function TrackRecord(){
 
             try {
                 trackrecord = await getTrackrecord();
-                
             }
             catch(err) {
                 console.error('TrackRecord() - catched exception: ', err)
@@ -27,7 +28,7 @@ export default function TrackRecord(){
             }
             
             
-            //setPortfolioRecovered(portfolio.response);
+            setTrackrecordInfoRecovered(trackrecord.response);
             //setshowLoading(false);
             console.log('TrackRecord() - Use effect final: ', trackrecord)
             
@@ -42,7 +43,13 @@ export default function TrackRecord(){
         <div className="App-background">
             <Header></Header>
             <PageTitle title="Track record"></PageTitle>
-          
+            <table className="container">
+                { 
+                    undefined != trackrecordInfoRecovered && 
+                    trackrecordInfoRecovered.length > 0 && 
+                    <TrackrecordInfoTable trackrecordInfo={trackrecordInfoRecovered}></TrackrecordInfoTable>
+                }
+            </table>
         </div>
     );
 }
