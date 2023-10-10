@@ -22,7 +22,33 @@
 }
 
 .Acc-logo{
-  width: 70%;
+  width: 30%;
+}
+
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+  .Acc-logo{
+    width: 70%;
+  }
+}
+
+
+
+@media (min-width: 801px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+  .main_paragraph{
+    width: 70%;
+    margin: auto;
+
+  }
+}
+
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+  .main_paragraph{
+    width: 100%;
+    margin: none;
+  }
 }
 
 @keyframes App-logo-spin {
