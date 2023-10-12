@@ -4,6 +4,7 @@ import About from './Pages/About';
 import Home from './Pages/Home'
 import Portfolio from './Pages/Portfolio';
 import TrackRecord from './Pages/TrackRecord';
+import StockDetail from './Pages/StockDetail';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
 
       <Route path="/portfolio" component={Portfolio} /> 
 
-      <Route path="/trackrecord" component={TrackRecord} /> 
+      <Route path="/trackrecord" component={TrackRecord} />
+
+      <Route path="/stockDetail" component={StockDetail} /> 
       
     </div>
   );

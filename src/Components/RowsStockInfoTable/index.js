@@ -1,4 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Route} from "wouter";
+import Home from '../../Pages/Home';
+import { Link, Switch } from "wouter";
+import About from '../../Pages/About';
+import StockDetail from '../../Pages/StockDetail';
 export const RowsStockInfoTable = ({ stocksInfo }) => {
 
     console.log("Se renderiza el componente RowsStockInfoTable")
@@ -76,6 +81,12 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
     
     console.log('stocksInfoReceived: ', stocksInfoReceived);
 
+    function goToStockDetail(stockDetail) {
+        localStorage.setItem('stockDetail', JSON.stringify(stockDetail));        
+        console.log("goToDetail() - stockDetail: ", stockDetail);
+        return <Route path="/stockDetail" component={StockDetail} />;
+    }
+
  
     return (
         <>
@@ -113,9 +124,12 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
                 {undefined != stocksInfoReceived && stocksInfoReceived.length > 0 && stocksInfoReceived.map((stock) => {
                     const list = (
                     <tr key={stock[0]}>
-                        <td>{stock[2]} </td>
+                        <td>
+                        <Link to='/stockDetail' onClick={() => goToStockDetail({stock})}>{stock[2]}</Link>
+                        </td>
                         <td>{stock[15]}</td>
                         <td>{stock[1]}</td>
+
                     </tr>
                     );
                     return list;
