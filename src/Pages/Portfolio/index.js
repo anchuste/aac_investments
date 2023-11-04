@@ -8,9 +8,10 @@ import './styles.css'
 
 export default function Portfolio(){
 
-    console.log("Portfolio() - Se renderiza el componente Portfolio");
+    //console.log("Portfolio() - Se renderiza el componente Portfolio");
     const [portfolioRecovered, setPortfolioRecovered] = useState([]);
     const [showLoading, setshowLoading] = useState(false);
+    const [showError, setshowError] = useState(false);
     //console.log("Portfolio() - portfolioRecovered: ", portfolioRecovered);
     let portfolio = [];
 
@@ -24,25 +25,26 @@ export default function Portfolio(){
     useEffect(() => {
         async function fetchData() {
 
-            console.log('Portfolio() - Use effect')
+            //console.log('Portfolio() - Use effect')
             setshowLoading(true);
 
             try {
                 portfolio = await getPortfolio();
-                
+                //console.log('Portfolio() - portfolio: ', portfolio)
             }
             catch(err) {
+                setshowError(true);
                 console.error('Portfolio() - catched exception: ', err)
             }
             finally {
-                
+                setshowLoading(false);
             }
             
             
             //sortPortfolio('portfolioPercentage', portfolio.response, sortDirection)
-            setPortfolioRecovered(portfolio.response);
-            setshowLoading(false);
-            console.log('Portfolio() - Use effect final: ', portfolio)
+            setPortfolioRecovered(portfolio);
+            
+            //console.log('Portfolio() - Use effect final: ', portfolio)
             
           // ...
         }
@@ -53,9 +55,18 @@ export default function Portfolio(){
         <div className="App-background">
             <Header></Header>
             <PageTitle title="Portfolio"></PageTitle>
-            <table className="container">
-                { undefined != portfolioRecovered && portfolioRecovered.length > 0 && <RowsStockInfoTable stocksInfo={portfolioRecovered}></RowsStockInfoTable>}
-            </table>
+            {
+                undefined != portfolioRecovered && portfolioRecovered.length > 0 &&
+                <table className="container">
+                    <RowsStockInfoTable stocksInfo={portfolioRecovered}></RowsStockInfoTable>
+                </table>
+            }
+            {
+                showError &&
+                <div className="error-message">
+                    <p>There was an error recovering the portfolio. Please try again later</p>
+                </div>
+            }
             <PulseLoader
                 color={"#3CC16A"}
                 loading={showLoading}

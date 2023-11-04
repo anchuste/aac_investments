@@ -11,6 +11,7 @@ export default function TrackRecord(){
     let trackrecord = [];
     const [trackrecordInfoRecovered, setTrackrecordInfoRecovered] = useState([]);
     const [showLoading, setshowLoading] = useState(false);
+    const [showError, setshowError] = useState(false);
 
     const CSSProperties = {
         display: "block",
@@ -22,43 +23,42 @@ export default function TrackRecord(){
 
         async function fetchData() {
 
-            console.log('TrackRecord() - Use effect')
+            //console.log('TrackRecord() - Use effect')
             setshowLoading(true);
 
             try {
                 trackrecord = await getTrackrecord();
+                //console.log('TrackRecord() - trackrecord: ', trackrecord)
                 setTrackrecordInfoRecovered(trackrecord.response);
             }
             catch(err) {
+                setshowError(true);
                 console.error('TrackRecord() - catched exception: ', err)
             }
             finally {
+                //console.log('TrackRecord() - Use effect finally')
                 setshowLoading(false);
-                console.log('TrackRecord() - Use effect final: ', trackrecord)
             }
-            
-            
-            
-            
-            
-          // ...
         }
         fetchData();
       }, []); // Or [] if effect doesn't need props or state
-
-
 
     return (
         <div className="App-background">
             <Header></Header>
             <PageTitle title="Track record"></PageTitle>
-            <table className="container">
-                { 
-                    undefined != trackrecordInfoRecovered && 
-                    trackrecordInfoRecovered.length > 0 && 
+
+            { undefined != trackrecordInfoRecovered && trackrecordInfoRecovered.length > 0 && 
+                <table className="container">
                     <TrackrecordInfoTable trackrecordInfo={trackrecordInfoRecovered}></TrackrecordInfoTable>
+                </table>
+            }            
+            <div className="error-message">
+                { 
+                    showError && 
+                    <p>There was an error recovering the track record. Please try again later.</p>
                 }
-            </table>
+            </div>
             <PulseLoader
                 color={"#3CC16A"}
                 loading={showLoading}

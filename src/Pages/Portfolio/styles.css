@@ -109,3 +109,9 @@
  .container td:nth-child(4),
  .container th:nth-child(4) { display: none; }
  }
+
+ .error-message{
+  font-size: 1.2rem;
+  background-color: red;
+  margin-top: 1.2rem;
+}

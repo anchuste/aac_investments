@@ -13,16 +13,16 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
     const [fieldToSort, setfieldToSort] = useState(['portfolioPercentage']);
 
     useEffect(() => {
-        console.log("Use effect - RowsStockInfoTable");
+        //console.log("Use effect - RowsStockInfoTable");
         setstocksInfoReceived(stocksInfo);
-        console.log("Use effect - RowsStockInfoTable final: ", stocksInfoReceived);
+        //console.log("Use effect - RowsStockInfoTable final: ", stocksInfoReceived);
         
         sortPortfolio('portfolioPercentage', 'desc');
     }, []);
 
     const sortPortfolio = (fieldToSort, sortDirection) =>{
 
-        console.log('sortPortfolio: ', stocksInfo);
+        //console.log('sortPortfolio: ', stocksInfo);
 
         let array = [];
         let field = "";
@@ -46,17 +46,17 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
 
 
 
-        console.log('field to sort:' , fieldToSort);
-        //console.log('array: ', array);
-        console.log('sortDirection: ', changedDirection);
+        //console.log('field to sort:' , fieldToSort);
+        
+        //console.log('sortDirection: ', changedDirection);
         
         
         array.sort((a, b) => {
             if (fieldToSort === 'portfolioPercentage'){
-                field = 15;
+                field = 'peso_cartera';
                 return changedDirection === "asc" ? a[field] - b[field] : b[field] - a[field];
             }else if (fieldToSort === 'date'){
-                field = 1;
+                field = 'fecha_compra';
                 let dayA = a[field].substring(0,2)
                 let monthA = a[field].substring(3,5)
                 let yearA = a[field].substring(6,10)
@@ -74,16 +74,16 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
             }
         });
 
-        console.log('¡Va a hacer la actualización del array!')
-        console.log('array: ', array)
+        //console.log('¡Va a hacer la actualización del array!')
+        //console.log('array: ', array)
         setstocksInfoReceived(array);
     }
     
-    console.log('stocksInfoReceived: ', stocksInfoReceived);
+    //console.log('stocksInfoReceived: ', stocksInfoReceived);
 
     function goToStockDetail(stockDetail) {
         localStorage.setItem('stockDetail', JSON.stringify(stockDetail));        
-        console.log("goToDetail() - stockDetail: ", stockDetail);
+        //console.log("goToDetail() - stockDetail: ", stockDetail);
         return <Route path="/stockDetail" component={StockDetail} />;
     }
 
@@ -112,7 +112,7 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
                 <th>
                     <button
                         type="button"
-                        onClick={() => sortPortfolio('date', sortDirection)}                        className="btn_header">
+                        onClick={() => sortPortfolio('date', sortDirection)} className="btn_header">
                     Added date
                     {fieldToSort === 'date' && sortDirection === 'desc' &&  <i className="fa fa-sort-desc" />}
                     {fieldToSort === 'date' && sortDirection === 'asc' &&  <i className="fa fa-sort-asc" />}
@@ -123,12 +123,12 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
             <tbody>
                 {undefined != stocksInfoReceived && stocksInfoReceived.length > 0 && stocksInfoReceived.map((stock) => {
                     const list = (
-                    <tr key={stock[0]}>
+                    <tr key={stock.id_stock_portfolio}>
                         <td>
-                        <Link to='/stockDetail' onClick={() => goToStockDetail({stock})}>{stock[2]}</Link>
+                        <Link to='/stockDetail' onClick={() => goToStockDetail({stock})}>{stock.titulo_valor}</Link>
                         </td>
-                        <td>{stock[15]}</td>
-                        <td>{stock[1]}</td>
+                        <td>{stock['peso_cartera']}</td>
+                        <td>{stock.fecha_compra}</td>
 
                     </tr>
                     );

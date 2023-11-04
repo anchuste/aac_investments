@@ -6,3 +6,9 @@ a{
 p{
     color: white;
 }
+
+.error-message{
+    font-size: 1.2rem;
+    background-color: red;
+    margin-top: 1.2rem;
+}
