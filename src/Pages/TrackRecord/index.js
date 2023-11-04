@@ -28,8 +28,8 @@ export default function TrackRecord(){
 
             try {
                 trackrecord = await getTrackrecord();
-                //console.log('TrackRecord() - trackrecord: ', trackrecord)
-                setTrackrecordInfoRecovered(trackrecord.response);
+                console.log('TrackRecord() - trackrecord: ', trackrecord)
+                setTrackrecordInfoRecovered(trackrecord);
             }
             catch(err) {
                 setshowError(true);

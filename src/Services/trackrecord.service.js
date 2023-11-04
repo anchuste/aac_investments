@@ -1,5 +1,5 @@
 
-const getTrackrecordURL = 'https://7cqmccvhoodohhlnc4627mmt640aylgy.lambda-url.eu-west-1.on.aws';
+const getTrackrecordURL = 'https://fragrant-firefly-8be0.albertoanchuste.workers.dev/api/trackrecord/getAll';
 
 export const getTrackrecord = () => {
 

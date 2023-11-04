@@ -52,11 +52,11 @@ export const TrackrecordInfoTable = ({ trackrecordInfo }) => {
             <tbody>
                 {undefined != trackrecordInfoReceived && trackrecordInfoReceived.length > 0 && trackrecordInfoReceived.map((stock) => {
                     const list = (
-                    <tr key={stock[0]}>
-                        <td>{stock[3]} </td>
-                        <td>{stock[15]}%</td>
-                        {stock[16] == 0 && <td>-- </td>}
-                        {stock[16] != 0 && <td>{stock[16]}</td>}
+                    <tr key={stock['id_trackrecord']}>
+                        <td>{stock['titulo_valor']} </td>
+                        <td>{stock['rentabilidad']}%</td>
+                        {stock['dias_en_cartera'] == 0 && <td>n/a </td>}
+                        {stock['dias_en_cartera'] != 0 && <td>{stock['dias_en_cartera']}</td>}
                     </tr>
                     );
                     return list;
