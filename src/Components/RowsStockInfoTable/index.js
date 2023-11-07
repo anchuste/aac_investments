@@ -82,8 +82,7 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
     //console.log('stocksInfoReceived: ', stocksInfoReceived);
 
     function goToStockDetail(stockDetail) {
-        localStorage.setItem('stockDetail', JSON.stringify(stockDetail));        
-        //console.log("goToDetail() - stockDetail: ", stockDetail);
+        localStorage.setItem('stockDetail', JSON.stringify(stockDetail));  
         return <Route path="/stockDetail" component={StockDetail} />;
     }
 
