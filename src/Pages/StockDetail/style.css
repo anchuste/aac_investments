@@ -1,0 +1,19 @@
+.stock_title{
+    font-size: 1.5em !important;
+    color: rgb(155, 232, 219) !important;
+}
+
+.stock_values_table{
+    font-size: 1.1em !important;
+    color: rgb(155, 232, 219) !important;
+}
+
+.profit{
+    font-size: 1.1em !important;
+    color: rgb(7, 235, 56) !important;
+}
+
+.loss{
+    font-size: 1.1em !important;
+    color: rgb(255, 0, 0) !important;
+}

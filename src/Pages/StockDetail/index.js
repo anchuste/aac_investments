@@ -3,6 +3,8 @@ import Header from '../../Components/Header';
 import PageTitle from '../../Components/PageTitle';
 import { getStockPrice } from '../../Services/stock.service';
 import { useState } from 'react';
+// Importar css
+import './style.css';
 
 export default function StockDetail({ stockDetail }) {
 
@@ -35,18 +37,41 @@ export default function StockDetail({ stockDetail }) {
         <div className="App-background">
           <Header></Header>
           <PageTitle title="Stock Detail"></PageTitle>
+          <p className='stock_title'>{stock.simbolo} - {stock.titulo_valor}</p>
             <div>
-                <p>{stock.simbolo} - {stock.titulo_valor}</p>
-                <p>Portfolio %: {stock.peso_cartera}</p>
-                <p>Reported price: {stock.cotizacion_inicial}</p>
-                <p>Current price: {stockPrice}</p>
-                { (stockPrice - stock.cotizacion_inicial) > 0 && <p style={{ color: 'green'}}>Profit: {Math.round(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</p> }
-                { (stockPrice - stock.cotizacion_inicial) < 0 && <p style={{ color: 'red'}}>Loss: {Math.round(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</p> }
-                <p>Added date: {stock.fecha_compra}</p>
-                
-                
-
-
+        <table className="container">
+            <tbody >
+            
+                <tr>
+                    <td className='stock_values_table'>Added date</td>
+                    <td>{stock.fecha_compra}</td>
+                </tr>
+                <tr>
+                    <td className='stock_values_table'>Portfolio %</td>
+                    <td>{stock.peso_cartera}</td>
+                </tr>
+                <tr>
+                    <td className='stock_values_table'>Reported Price</td>
+                    <td>{stock.cotizacion_inicial}</td>
+                </tr>
+                <tr>
+                    <td className='stock_values_table'>Current price</td>
+                    <td>{Number(stockPrice).toFixed(2)}</td>
+                </tr>
+                { (stockPrice - stock.cotizacion_inicial) > 0 && 
+                    <tr>
+                        <td className='profit'>Current operation result: Profit</td>
+                        <td className='profit'>{Math.floor(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</td>
+                    </tr>
+                }
+                { (stockPrice - stock.cotizacion_inicial) < 0 && 
+                    <tr>
+                        <td className='loss'>Current operation result: Loss</td>
+                        <td className='loss'>{Math.round(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
             </div>
         </div>
     );
