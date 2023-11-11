@@ -3,8 +3,6 @@
 
 let portfolioURL = 'https://fragrant-firefly-8be0.albertoanchuste.workers.dev/api/portfolio/getAll';
 
-const getPortfolioURL = new URL(portfolioURL);
-
 export const getPortfolio = () => {
 
     return new Promise((resolve, reject) => {

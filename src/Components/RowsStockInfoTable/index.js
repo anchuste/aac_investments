@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route} from "wouter";
-import Home from '../../Pages/Home';
-import { Link, Switch } from "wouter";
-import About from '../../Pages/About';
+import { Link } from "wouter";
 import StockDetail from '../../Pages/StockDetail';
 export const RowsStockInfoTable = ({ stocksInfo }) => {
 
@@ -28,7 +26,7 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
         let field = "";
         let changedDirection = "";
 
-        if (undefined == stocksInfoReceived ||stocksInfoReceived.length <= 0){
+        if (undefined === stocksInfoReceived ||stocksInfoReceived.length <= 0){
             array = [...stocksInfo];
         }else{
             array = [...stocksInfoReceived];
@@ -120,7 +118,7 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
             </tr>
             </thead>
             <tbody>
-                {undefined != stocksInfoReceived && stocksInfoReceived.length > 0 && stocksInfoReceived.map((stock) => {
+                {undefined !== stocksInfoReceived && stocksInfoReceived.length > 0 && stocksInfoReceived.map((stock) => {
                     const list = (
                     <tr key={stock.id_stock_portfolio}>
                         <td>

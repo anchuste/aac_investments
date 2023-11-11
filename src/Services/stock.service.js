@@ -1,6 +1,3 @@
-import AppConstants from '../Constants/AppConstants';
-import axios from 'axios';
-
 export const getStockPrice = async (title) => {
   
 
