@@ -4,6 +4,7 @@ import PageTitle from '../../Components/PageTitle';
 import { getTrackrecord } from '../../Services/trackrecord.service';
 import './styles.css'
 import { TrackrecordInfoTable } from '../../Components/TrackrecordInfoTable';
+import Navbar from '../../Components/Navbar';
 import PulseLoader from "react-spinners/PulseLoader";
 
 export default function TrackRecord(){
@@ -45,6 +46,7 @@ export default function TrackRecord(){
 
     return (
         <div className="App-background">
+            <Navbar currentPage={"trackrecord"}></Navbar>
             <Header></Header>
             <PageTitle title="Track record"></PageTitle>
 

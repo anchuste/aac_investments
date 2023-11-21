@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import PageTitle from '../../Components/PageTitle';
 import {RowsStockInfoTable} from '../../Components/RowsStockInfoTable';
+import Navbar from '../../Components/Navbar';
 import { getPortfolio } from '../../Services/portfolio.service';
 import PulseLoader from "react-spinners/PulseLoader";
 import './styles.css'
@@ -53,6 +54,7 @@ export default function Portfolio(){
       
     return (
         <div className="App-background">
+            <Navbar currentPage={"portfolio"}></Navbar>
             <Header></Header>
             <PageTitle title="Portfolio"></PageTitle>
             {

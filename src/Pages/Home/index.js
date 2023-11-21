@@ -1,10 +1,13 @@
 import Header from '../../Components/Header';
 import PageTitle from '../../Components/PageTitle';
-import './styles.css'
+import Navbar from '../../Components/Navbar';
+import './styles.css';
 
 export default function Home(){
     return (
-        <div className="App-background">
+        <>
+          <Navbar currentPage={"home"}></Navbar>
+          <div className="App-background">
           <Header></Header>
           <PageTitle title="Home"></PageTitle>
 
@@ -15,14 +18,8 @@ export default function Home(){
           <p className="main_paragraph"> 
           Por otro lado, en la sección Track record se muestra todo el historial de inversiones del fondo.
           </p>
-    
-          <a href="/portfolio">Portfolio</a>
-
-          <a href="/trackrecord">Track record</a>
-    
-          <a href="/about">About</a>
-    
-          </div>
+        </div>
+      </>
     );
 }
 
