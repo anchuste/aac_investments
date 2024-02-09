@@ -3,7 +3,7 @@ export default function Navbar({currentPage}) {
     let current = currentPage;
 
     return (
-            <nav className="navbar navbar-expand-lg" data-bs-theme="dark" style={{backgroundColor: "#005B41"}}>
+            <nav className="navbar navbar-expand-lg" data-bs-theme="dark" style={{backgroundColor: "#12372A"}}>
               <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>

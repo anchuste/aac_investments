@@ -5,7 +5,7 @@ import {RowsStockInfoTable} from '../../Components/RowsStockInfoTable';
 import Navbar from '../../Components/Navbar';
 import { getPortfolio } from '../../Services/portfolio.service';
 import PulseLoader from "react-spinners/PulseLoader";
-import './styles.css'
+import './portfolio_styles.css'
 
 export default function Portfolio(){
 

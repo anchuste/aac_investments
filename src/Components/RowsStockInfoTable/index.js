@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Route} from "wouter";
 import { Link } from "wouter";
 import StockDetail from '../../Pages/StockDetail';
+import './styles.css';
 export const RowsStockInfoTable = ({ stocksInfo }) => {
 
     console.log("Se renderiza el componente RowsStockInfoTable")
@@ -15,7 +16,7 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
         setstocksInfoReceived(stocksInfo);
         //console.log("Use effect - RowsStockInfoTable final: ", stocksInfoReceived);
         
-        sortPortfolio('portfolioPercentage', 'desc');
+        sortPortfolio('portfolioPercentage', 'asc');
     }, []);
 
     const sortPortfolio = (fieldToSort, sortDirection) =>{
@@ -122,7 +123,8 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
                     const list = (
                     <tr key={stock.id_stock_portfolio}>
                         <td>
-                        <Link to='/stockDetail' onClick={() => goToStockDetail({stock})}>{stock.titulo_valor}</Link>
+                        <Link to='/stockDetail' onClick={() => goToStockDetail({stock})}>{stock.titulo_valor} <i id="icono" className="fa fa-search" style={{marginLeft: "0.25em", color:"#436850"}} /> </Link>
+                        
                         </td>
                         <td>{stock['peso_cartera']}</td>
                         <td>{stock.fecha_compra}</td>
