@@ -2,6 +2,7 @@ import spainFlag from './../../Resources/icons/spain-flag.png';
 import ukFlag from './../../Resources/icons/uk-flag.png';
 import './../..//Resources/translation/i18n';
 import { useTranslation, Trans } from 'react-i18next';
+import './styles.css';
 
 import { useState } from 'react';
 

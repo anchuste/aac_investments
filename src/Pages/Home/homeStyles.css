@@ -1,0 +1,23 @@
+a{
+    font-size: 1.3rem;
+    color: rgb(19, 137, 216);
+}
+p{
+    width: 90%;
+    color: #ddded8;
+    font-size: 1.0rem;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.52em;
+}
+
+@media (min-width: 500px) 
+{
+    p{
+        width: 65%;
+        font-size: 1.3rem;
+        color: #ddded8;
+        line-height: 1.42em;
+    }
+    
+}

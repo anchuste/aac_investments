@@ -21,8 +21,8 @@ i18n
       en: {
         translation: {
           home:{
-            stocksStrategy: "Investment strategies publication of AAC private investor funds for 2021 and 2022 with the aim of returning profits in 2-3 years. Our portfolio information is in the Portfolio section.",
-            secondSection: "On the other hand, the Track record section shows the entire investment history of the fund."
+            stocksStrategy: "Publication of long-term value investing strategies and concentrating capital in large US companies. Our idea is to concentrate capital in no more than 10 high-value companies operating in different sectors.",
+            secondSection: "We invest in companies that have a recognized brand in their sector, good future prospects and that treat the shareholder well."
           },
           nav:{
             home: "Home",
@@ -37,8 +37,8 @@ i18n
       es: {
         translation: {
           home:{
-            stocksStrategy: "Publicación de las estrategias de inversión de los fondos del inversionista privado AAC para los años 2021 y 2022 con objetivo de retornar beneficios en 2-3 años. La información de nuestra cartera se encuentra en la sección Portfolio.",
-            secondSection: "Por otro lado, en la sección Track record se muestra todo el historial de inversiones del fondo."
+            stocksStrategy: "Publicación de estrategias de inversión en valor (value investing) a largo plazo y concentrando el capital en grandes compañías estadounidenses. Nuestra idea es concentrar el capital en no más de 10 compañías de alto valor que operen en distintos sectores.",
+            secondSection: "Invertimos en empresas que tengan una marca reconocida en su sector, buenas perspectivas de futuro y que traten bien al accionista."
           },
           nav:{
             home: "Inicio",
