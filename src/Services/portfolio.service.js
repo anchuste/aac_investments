@@ -1,6 +1,4 @@
 
-//const getPortfolioURL = 'https://cxmhacvpisple4wedaqgzp6q4e0acrnw.lambda-url.eu-west-1.on.aws';
-
 let portfolioURL = 'https://fragrant-firefly-8be0.albertoanchuste.workers.dev/api/portfolio/getAll';
 
 export const getPortfolio = () => {

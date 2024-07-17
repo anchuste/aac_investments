@@ -1,7 +1,7 @@
 import Header from '../../Components/Header';
 import PageTitle from '../../Components/PageTitle';
 import Navbar from '../../Components/Navbar';
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import './homeStyles.css';
 
 export default function Home(){
