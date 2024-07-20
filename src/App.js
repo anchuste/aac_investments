@@ -9,8 +9,7 @@ import StockDetail from './Pages/StockDetail';
 function App() {
   return (
     <div className="App-background">
-
-      <Route path="/about" component={About} /> 
+      <Route path="/about" component={About} />
 
       <Route path="/" component={Home} /> 
 

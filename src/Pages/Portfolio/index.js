@@ -53,8 +53,9 @@ export default function Portfolio(){
       }, []); // Or [] if effect doesn't need props or state
       
     return (
-        <div className="App-background">
+        <>
             <Navbar currentPage={"portfolio"}></Navbar>
+            <div>
             <Header></Header>
             <PageTitle title="Portfolio"></PageTitle>
             {
@@ -78,7 +79,8 @@ export default function Portfolio(){
                 data-testid="loader"
                 title='Hola'
             />
-        </div>
+            </div>
+        </>
     );
 }
 
