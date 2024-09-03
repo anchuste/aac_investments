@@ -13,7 +13,7 @@ export const getStockPrice = async (title) => {
     try {
         const response = await fetch(url, options);
         const result = await response.json();
-	    console.log("Resultado: ", result);
+	    //console.log("Resultado: ", result);
         return result;
     } catch (error) {
         console.error(error);

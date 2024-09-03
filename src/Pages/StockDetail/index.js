@@ -12,7 +12,7 @@ export default function StockDetail({ stockDetail }) {
     const [stocksDetailsArray, setStocksDetailsArray] = useState([]);
     const [stock, setStock] = useState({});
     
-    console.log("StockDetail() - stockDetail: ", {stockDetail});
+    //console.log("StockDetail() - stockDetail: ", {stockDetail});
 
     useEffect(() => {
 
@@ -31,9 +31,6 @@ export default function StockDetail({ stockDetail }) {
             setStocksDetailsArray(stockDetailArray);
         }
 
-        
-
-        console.log("StockDetail() - stockDetailRecovered: ", stockDetailRecovered);
         // Lanzamos una petición a la API para recuperar el precio del stock
         getStockPrice(stockDetailRecovered.stock.simbolo).then((response) => {
             //console.log("StockDetail().getStockPrice - response: ", response);
@@ -48,6 +45,7 @@ export default function StockDetail({ stockDetail }) {
           <Header></Header>
           <PageTitle title="Stock Detail"></PageTitle>
           <p className='stock_title'>{stock.simbolo} - {stock.titulo_valor}</p>
+          <p className='stock_title'>% of Portfolio: {stock.peso_cartera}</p>
           <p className='stock_title'>Current price: ${Number(stockPrice).toFixed(2)} </p>
             <div>
                 
