@@ -10,11 +10,16 @@ import './portfolio_styles.css'
 export default function Portfolio(){
 
     //console.log("Portfolio() - Se renderiza el componente Portfolio");
+    const [portfolioMap, setPortfolioMap] = useState(new Map());
     const [portfolioRecovered, setPortfolioRecovered] = useState([]);
     const [showLoading, setshowLoading] = useState(false);
     const [showError, setshowError] = useState(false);
-    //console.log("Portfolio() - portfolioRecovered: ", portfolioRecovered);
+
+    // Aquí guardamos toda la info de bbdd con respecto al portfolio
     let portfolio = [];
+    // Creamos un array para guardar los elementos de los simbolos únicos. 
+    // Por ejemplo, si tenemos 3 elementos de TEF, guardamos un único elemento de TEF.
+    let portfolioSimbolos = [];
 
     const CSSProperties = {
         display: "block",
@@ -41,11 +46,21 @@ export default function Portfolio(){
                 setshowLoading(false);
             }
             
-            
-            //sortPortfolio('portfolioPercentage', portfolio.response, sortDirection)
-            setPortfolioRecovered(portfolio);
-            
-            //console.log('Portfolio() - Use effect final: ', portfolio)
+            // Construimos mapa en el que la key es el simbolo y el valor es un array con los elementos de ese simbolo.
+            const portfolioMap = new Map();
+
+            for (const element of portfolio) {
+                if (portfolioMap.has(element.simbolo)){
+                    portfolioMap.get(element.simbolo).push(element);
+                }else{
+                    portfolioMap.set(element.simbolo, new Array(element));
+                    // Aprovechando que hemos construido el map, guardamos los elementos de los simbolos únicos en un array.
+                    portfolioSimbolos.push(element);
+                }
+            }
+
+            setPortfolioMap(portfolioMap);
+            setPortfolioRecovered(portfolioSimbolos);
             
           // ...
         }
@@ -61,7 +76,7 @@ export default function Portfolio(){
             {
                 undefined != portfolioRecovered && portfolioRecovered.length > 0 &&
                 <table className="container">
-                    <RowsStockInfoTable stocksInfo={portfolioRecovered}></RowsStockInfoTable>
+                    <RowsStockInfoTable stocksInfo={portfolioRecovered} allStocksInfo= {portfolioMap}></RowsStockInfoTable>
                 </table>
             }
             {

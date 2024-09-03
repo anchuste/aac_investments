@@ -9,6 +9,7 @@ import './style.css';
 export default function StockDetail({ stockDetail }) {
 
     const [stockPrice, setStockPrice] = useState(0);
+    const [stocksDetailsArray, setStocksDetailsArray] = useState([]);
     const [stock, setStock] = useState({});
     
     console.log("StockDetail() - stockDetail: ", {stockDetail});
@@ -22,6 +23,15 @@ export default function StockDetail({ stockDetail }) {
             stockDetailRecovered = JSON.parse(stockDetailRecovered);
             setStock(stockDetailRecovered.stock); 
         }
+
+        let stockDetailArray = localStorage.getItem('stockDetailArray');
+
+        if (undefined != stockDetailArray && null != stockDetailArray){
+            stockDetailArray = JSON.parse(stockDetailArray);
+            setStocksDetailsArray(stockDetailArray);
+        }
+
+        
 
         console.log("StockDetail() - stockDetailRecovered: ", stockDetailRecovered);
         // Lanzamos una petición a la API para recuperar el precio del stock
@@ -38,38 +48,32 @@ export default function StockDetail({ stockDetail }) {
           <Header></Header>
           <PageTitle title="Stock Detail"></PageTitle>
           <p className='stock_title'>{stock.simbolo} - {stock.titulo_valor}</p>
+          <p className='stock_title'>Current price: ${Number(stockPrice).toFixed(2)} </p>
             <div>
+                
         <table className="container">
             <tbody >
-            
                 <tr>
                     <td className='stock_values_table'>Added date</td>
-                    <td>{stock.fecha_compra}</td>
-                </tr>
-                <tr>
-                    <td className='stock_values_table'>Portfolio %</td>
-                    <td>{stock.peso_cartera}</td>
-                </tr>
-                <tr>
                     <td className='stock_values_table'>Reported Price</td>
-                    <td>{stock.cotizacion_inicial}</td>
+                    <td className='stock_values_table'>+/- Rep. Price</td>
                 </tr>
-                <tr>
-                    <td className='stock_values_table'>Current price</td>
-                    <td>{Number(stockPrice).toFixed(2)}</td>
-                </tr>
-                { (stockPrice - stock.cotizacion_inicial) > 0 && 
-                    <tr>
-                        <td className='profit'>Current operation result: Profit</td>
-                        <td className='profit'>{Math.floor(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</td>
+            {undefined !== stocksDetailsArray && stocksDetailsArray.length > 0 && stocksDetailsArray.map((stock) => {
+                    const list = (
+                    <tr key={stock.id_stock_portfolio}>
+                        <td>{stock.fecha_compra}</td>
+                        <td>${stock.cotizacion_inicial} </td>
+                        { (stockPrice - stock.cotizacion_inicial) > 0 &&            
+                            <td className='profit'>+ {Math.floor(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</td>
+                        }
+                        { (stockPrice - stock.cotizacion_inicial) < 0 && 
+                            <td className='loss'>-{Math.round(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</td>
+                        }
+                        
                     </tr>
-                }
-                { (stockPrice - stock.cotizacion_inicial) < 0 && 
-                    <tr>
-                        <td className='loss'>Current operation result: Loss</td>
-                        <td className='loss'>{Math.round(((stockPrice - stock.cotizacion_inicial)/stock.cotizacion_inicial)*100)}%</td>
-                    </tr>
-                }
+                    );
+                    return list;
+                })}
             </tbody>
         </table>
             </div>

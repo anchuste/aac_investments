@@ -3,19 +3,21 @@ import { Route} from "wouter";
 import { Link } from "wouter";
 import StockDetail from '../../Pages/StockDetail';
 import './styles.css';
-export const RowsStockInfoTable = ({ stocksInfo }) => {
+export const RowsStockInfoTable = ({ stocksInfo, allStocksInfo }) => {
 
     console.log("Se renderiza el componente RowsStockInfoTable")
 
+    // Mapa en el que la key es el simbolo y el valor es un array con los elementos de ese simbolo.
+    // Para un valor puede que tengamos 3 paquetes de acciones. Starbuck, por ejemplo, puede tener 3 paquetes de acciones.
+    const [stocksInfoReceivedMap, setstocksInfoReceivedMap] = useState(new Map());
     const [stocksInfoReceived, setstocksInfoReceived] = useState([]);
     const [sortDirection, setSortDirection] = useState(['desc']);
     const [fieldToSort, setfieldToSort] = useState(['portfolioPercentage']);
 
     useEffect(() => {
-        //console.log("Use effect - RowsStockInfoTable");
         setstocksInfoReceived(stocksInfo);
-        //console.log("Use effect - RowsStockInfoTable final: ", stocksInfoReceived);
-        
+        setstocksInfoReceivedMap(allStocksInfo);
+        //console.log("Use effect - RowsStockInfoTable final: ", allStocksInfo);
         sortPortfolio('portfolioPercentage', 'asc');
     }, []);
 
@@ -81,7 +83,11 @@ export const RowsStockInfoTable = ({ stocksInfo }) => {
     //console.log('stocksInfoReceived: ', stocksInfoReceived);
 
     function goToStockDetail(stockDetail) {
-        localStorage.setItem('stockDetail', JSON.stringify(stockDetail));  
+        //console.log('stockDetail: ', stockDetail);
+        //console.log('stockDetail stock: ', stockDetail.stock.simbolo);
+        let stockDetailArray = stocksInfoReceivedMap.get(stockDetail.stock.simbolo)
+        localStorage.setItem('stockDetail', JSON.stringify(stockDetail)); 
+        localStorage.setItem('stockDetailArray', JSON.stringify(stockDetailArray));
         return <Route path="/stockDetail" component={StockDetail} />;
     }
 
