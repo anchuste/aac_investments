@@ -1,5 +1,5 @@
 
-let portfolioURL = 'https://fragrant-firefly-8be0.albertoanchuste.workers.dev/api/portfolio/getAll';
+let portfolioURL = 'https://fragrant-firefly-8be0.project-utils.workers.dev/api/portfolio/getAll';
 
 export const getPortfolio = () => {
 

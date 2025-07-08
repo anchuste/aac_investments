@@ -1,5 +1,5 @@
 
-const getTrackrecordURL = 'https://fragrant-firefly-8be0.albertoanchuste.workers.dev/api/trackrecord/getAll';
+const getTrackrecordURL = 'https://fragrant-firefly-8be0.project-utils.workers.dev/api/trackrecord/getAll';
 
 export const getTrackrecord = () => {
 
